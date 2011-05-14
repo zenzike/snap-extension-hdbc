@@ -1,0 +1,33 @@
+Name:                snap-extension-hdbc
+Version:             0.0.1
+Synopsis:            HDBC extension for Snap Framework
+Homepage:            https://github.com/zenzike/snap-extension-hdbc
+License:             BSD3
+License-file:        LICENSE
+Author:              Nicolas Wu
+Maintainer:          zenzike@gmail.com
+Category:            Web
+Build-type:          Simple
+
+Cabal-version:       >=1.2
+
+
+Library
+  hs-source-dirs: src
+
+  Exposed-modules:
+      Snap.Extension.HDBC
+
+  Build-depends:
+      base >= 4 && < 5
+    , snap >= 0.4 && < 0.5
+    , snap-core >= 0.4 && < 0.5
+    , HDBC == 2.2.7.*
+    , mtl == 2.0.1.*
+    , transformers == 0.2.2.*
+
+  extensions:
+      OverloadedStrings
+    , FlexibleInstances
+    , TypeSynonymInstances
+    , MultiParamTypeClasses

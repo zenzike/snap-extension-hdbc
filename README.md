@@ -17,8 +17,8 @@ Example
 -------
 
 If you want to use this as part of your Snap application, you should
-change your 'ApplicationState' to contain the 'HDBCState', the following
-will be typically placed in the 'Application.hs' file:
+change your `ApplicationState` to contain the `HDBCState`, the following
+will be typically placed in the `Application.hs` file:
 
 ~~~~
 type Application = SnapExtend ApplicationState
@@ -40,8 +40,8 @@ instance HasHDBCState ApplicationState where
 
 Finally, you should tell Snap how to initialize your state. This part is
 specific to the backend implementation you are using, where
-the type of 'hdbcInitializer' depends on the package you have imported.
-For example, iff you have imported 'Snap.Extension.HDBC.Sqlite3' then
+the type of `hdbcInitializer` depends on the package you have imported.
+For example, if you have imported `Snap.Extension.HDBC.Sqlite3` then
 you could set things up with the following code:
 
 ~~~~
@@ -52,7 +52,7 @@ applicationInitializer = do
 ~~~~
 
 The following code shows how you can access a connection to your
-database using the 'connWrapper' function that is exported from
+database using the `connWrapper` function that is exported from
 this package:
 
 ~~~~

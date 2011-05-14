@@ -32,7 +32,7 @@ class (MonadSnap m) => MonadHDBC m where
 
 -----------------------------------------------------------------------------
 newtype HDBCState = HDBCState
-  { _connection :: ConnWrapper
+  { _connWrapper :: ConnWrapper
   }
 
 -- | An application that 'HasHDBCState' is a 'MonadHDBC' whose state
@@ -42,12 +42,12 @@ class HasHDBCState s where
   setHDBCState :: HDBCState-> s -> s
 
 instance HasHDBCState s => MonadHDBC (SnapExtend s) where
-  connWrapper = fmap _connection $ asks getHDBCState
+  connWrapper = fmap _connWrapper $ asks getHDBCState
 
 instance (MonadSnap m, HasHDBCState s) => MonadHDBC (ReaderT s m) where
-  connWrapper = fmap _connection $ asks getHDBCState
+  connWrapper = fmap _connWrapper $ asks getHDBCState
 
 instance InitializerState HDBCState where
   extensionId = const "HDBC/HDBC"
-  mkCleanup   = disconnect . _connection
+  mkCleanup   = disconnect . _connWrapper
   mkReload    = const $ return ()
